@@ -21,5 +21,5 @@ public class Sensor {
 	
 	private String name;
 	
-	private String desccription;
+	private String description;
 }

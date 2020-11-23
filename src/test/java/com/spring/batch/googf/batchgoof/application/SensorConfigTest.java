@@ -28,7 +28,6 @@ class SensorConfigTest {
 	 private JobLauncherTestUtils testUtils;
 
 	@Autowired
-	@Qualifier("sensor")
     private SensorJobConfig config;
     
 	@Autowired

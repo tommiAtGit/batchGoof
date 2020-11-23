@@ -7,8 +7,10 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.spring.batch.googf.batchgoof.model.NetworkDto;
 import com.spring.batch.googf.batchgoof.model.swc.Network;
@@ -48,7 +50,9 @@ public class NetworkJobConfig {
     NetworkWriterService networkWriterService() {
     	return new NetworkWriterService();
     }
+    
     @Bean
+    @Primary
     public Job networkConfigJob() {
     	 return jobBuilders.get("networkConfigJob")
     		        .start(networkConfigStep())

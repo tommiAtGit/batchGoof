@@ -20,7 +20,7 @@ public class SensorDto {
 	
 	private String name;
 	
-	private String desccription;
+	private String description;
 	
 	
 }

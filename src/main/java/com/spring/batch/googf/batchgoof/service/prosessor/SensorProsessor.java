@@ -16,7 +16,7 @@ public class SensorProsessor {
 	public ItemProcessor<SensorDto,Sensor> sensorItemProsesor() {
 		
 		log.info(".. At itemprosessor sensordto: " );
-		return sensorDto -> new Sensor(sensorDto.getUuid(),sensorDto.getName(),sensorDto.getDesccription());
+		return sensorDto -> new Sensor(sensorDto.getUuid(),sensorDto.getName(),sensorDto.getDescription());
 		
 		
 	}
