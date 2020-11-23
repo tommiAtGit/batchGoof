@@ -5,14 +5,14 @@ import static org.junit.Assert.fail;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.springframework.batch.test.JobLauncherTestUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.test.JobLauncherTestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import com.spring.batch.googf.batchgoof.BatchTestConfiguration;
 import com.spring.batch.googf.batchgoof.BatchgoofApplication;
 
@@ -53,13 +53,12 @@ class NetworkConfigTest {
 	@Test
 	void testNetworkConfigJob() {
 		JobExecution result = null;
+		this.initailizeJobLauncherTestUtils();
 		try {
-			
-			
-			//result = this.testUtils.launchJob();
-			result = this.testUtils.getJobLauncher()
-							.run(config.networkConfigJob(),
-							testUtils.getUniqueJobParameters());
+			result = this.testUtils.launchJob();
+//			result = this.testUtils.getJobLauncher()
+//							.run(config.networkConfigJob(),
+//							testUtils.getUniqueJobParameters());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail();

@@ -7,15 +7,10 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
-import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
-import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.spring.batch.googf.batchgoof.BatchTestConfiguration;
@@ -56,12 +51,14 @@ class SensorConfigTest {
 	@Test
 	void testSensorConfigJob() {
 		JobExecution result = null;
+		 this.initailizeJobLauncherTestUtils();
 		try {
-			result = this.testUtils.getJobLauncher()
-							.run(config.sensorConfigJob(),
-							testUtils.getUniqueJobParameters());
-		} catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException
-				| JobParametersInvalidException e) {
+			result = this.testUtils.launchJob();
+//			result = this.testUtils.getJobLauncher()
+//							.run(config.sensorConfigJob(),
+//							testUtils.getUniqueJobParameters());
+		} catch (Exception e) {
+			e.printStackTrace();
 			fail();
 		}
 		Assert.assertNotNull(result);
