@@ -13,11 +13,12 @@ public class NetworkWriterService {
 
 	public ItemWriter<Network> networkWriter(){
 	
+			
 			return new ItemWriter<Network>() {
 				
 				@Override
 				public void write(List<? extends Network> items) throws Exception {
-					log.info("Write netwok items: {}", items);
+					log.info(".. At NetworkWriterService, write netwok items: {}", items.get(0).getUuid());
 					
 				}
 			};

@@ -34,10 +34,23 @@ public class NetworkJobConfig {
     private  NetworkWriterService networkWriter;
     
     
+    @Bean 
+    NetworkReaderService networkReaderService(){
+    	return new NetworkReaderService();
+    }
     
     @Bean
+    NetworkProsessor networkProseccor() {
+    	return new NetworkProsessor();
+    }
+    
+    @Bean 
+    NetworkWriterService networkWriterService() {
+    	return new NetworkWriterService();
+    }
+    @Bean
     public Job networkConfigJob() {
-    	 return jobBuilders.get("customerReportJob")
+    	 return jobBuilders.get("networkConfigJob")
     		        .start(networkConfigStep())
     		        .build();
     }
@@ -45,7 +58,7 @@ public class NetworkJobConfig {
 	@Bean
 	public Step networkConfigStep(){
 		 try {
-			return stepBuilders.get("chunkStep")
+			return stepBuilders.get("networkConfigStep")
 				        .<NetworkDto, Network>chunk(20)
 				        .reader(networkReader.networkJsonReader())
 				        .processor(networkProsessor.networkItemProsesor())
